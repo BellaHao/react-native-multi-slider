@@ -373,6 +373,14 @@ export default class MultiSlider extends React.Component {
 
   render() {
     const { positionOne, positionTwo } = this.state;
+    const { positionValue } = this.props;
+
+    var arr = positionValue.map(value =>
+        valueToPosition(value, this.optionsArray, this.props.sliderLength),
+    );
+    let positionOneA = arr[0];
+    let positionTwoA = arr[1];
+
     const {
       selectedStyle,
       unselectedStyle,
@@ -383,12 +391,15 @@ export default class MultiSlider extends React.Component {
     const twoMarkers = this.props.values.length == 2; // when allowOverlap, positionTwo could be 0, identified as string '0' and throwing 'RawText 0 needs to be wrapped in <Text>' error
 
     const trackOneLength = positionOne;
+    const trackOneLengthA = positionOneA;
     const trackOneStyle = twoMarkers
       ? unselectedStyle
       : selectedStyle || styles.selectedTrack;
     const trackThreeLength = twoMarkers ? sliderLength - positionTwo : 0;
+    const trackThreeLengthA = twoMarkers ? sliderLength - positionTwoA : 0;
     const trackThreeStyle = unselectedStyle;
     const trackTwoLength = sliderLength - trackOneLength - trackThreeLength;
+    const trackTwoLengthA = sliderLength - trackOneLengthA - trackThreeLengthA;
     const trackTwoStyle = twoMarkers
       ? selectedStyle || styles.selectedTrack
       : unselectedStyle;
@@ -436,7 +447,7 @@ export default class MultiSlider extends React.Component {
               styles.track,
               this.props.trackStyle,
               trackOneStyle,
-              { width: trackOneLength },
+              { width: trackOneLengthA },
             ]}
           />
           <View
@@ -444,7 +455,7 @@ export default class MultiSlider extends React.Component {
               styles.track,
               this.props.trackStyle,
               trackTwoStyle,
-              { width: trackTwoLength },
+              { width: trackTwoLengthA },
             ]}
             {...(twoMarkers ? this._panResponderBetween.panHandlers : {})}
           />
@@ -454,7 +465,7 @@ export default class MultiSlider extends React.Component {
                 styles.track,
                 this.props.trackStyle,
                 trackThreeStyle,
-                { width: trackThreeLength },
+                { width: trackThreeLengthA },
               ]}
             />
           )}
@@ -545,8 +556,6 @@ export default class MultiSlider extends React.Component {
           <Label
             oneMarkerValue={this.state.valueOne}
             twoMarkerValue={this.state.valueTwo}
-            minValue={this.props.min}
-            maxValue={this.props.max}
             oneMarkerLeftPosition={positionOne}
             twoMarkerLeftPosition={positionTwo}
             oneMarkerPressed={this.state.onePressed}
