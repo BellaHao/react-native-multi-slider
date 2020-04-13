@@ -1,4 +1,4 @@
-# react-native-multi-slider-pro
+# react-native-multi-slider
 
 Pure JS react native slider component with one or two markers.
 Options to customize track, touch area and provide customer markers and callbacks for touch events and value changes.
@@ -22,7 +22,7 @@ react-native run-android
 ### Installation
 
 ```bash
-$ npm install --save @BellaHal/react-native-multi-slider-pro
+$ npm install --save @BellaHao/react-native-multi-slider
 ```
 
 ### Usage in a ScrollView
