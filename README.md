@@ -101,4 +101,4 @@ Feel free to contribute to this part of the documentation.
 | markerOffsetY | 0 | number | Offset second cursor. |
 | minMarkerOverlapDistance | 0 | number | if this is > 0 and allowOverlap is false, this value will determine the closest two markers can come to each other. This can be used for cases where you have two markers large cursors and you don't want them to overlap. Note that markers will still overlap at the start if starting values are too near. |
 | imageBackgroundSource | undefined | string | Specifies the source as required by [ImageBackground](https://facebook.github.io/react-native/docs/imagebackground)|
-| values | [0] | array of numbers | init values of the slider. |
+| positionValue | [0] | array of numbers | init values of the slider. |
