@@ -423,12 +423,12 @@ export default class MultiSlider extends React.Component {
 
     const markerContainerOne = {
       top: markerOffsetY - 24,
-      left: trackOneLength + markerOffsetX - 24,
+      left: (trackOneLength>trackOneLengthA?trackOneLength:trackOneLengthA) + markerOffsetX - 24,
     };
 
     const markerContainerTwo = {
       top: markerOffsetY - 24,
-      right: trackThreeLength - markerOffsetX - 24,
+      right: (trackThreeLength>trackThreeLengthA?trackThreeLength:trackThreeLengthA) - markerOffsetX - 24,
     };
 
     const containerStyle = [styles.container, this.props.containerStyle];
